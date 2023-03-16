@@ -1,0 +1,119 @@
+body {
+    font-family: 'Manrope', sans-serif;
+    line-height: 25px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 15px;
+    /* Center the text inside the h1 element */
+}
+
+p {
+    text-align: justify;
+}
+
+.clickedHeader,
+.initialHeader {
+    font-family: 'Righteous', cursive;
+
+
+}
+
+.clickedHeader {
+    display: flex;
+    /* Set the display property to flex to enable flexbox */
+    justify-content: center;
+    /* Center the child elements horizontally */
+    align-items: center;
+    /* Center the child elements vertically */
+    flex-direction: column;
+    margin: 3%;
+
+}
+
+.initialHeader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    border-color: black;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 8px;
+    padding: 1%;
+    background-color: hsla(61, 100%, 53%, 0.616);
+
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    /* This centers the container horizontally */
+    max-width: 70%;
+}
+
+button {
+    background-color: hsla(122, 95%, 44%, 0.808);
+    margin-top: 10px;
+    color: white;
+    font-weight: bolder;
+    padding: 12px 24px;
+    text-align: center;
+    text-shadow: 1px 1px 1.5px #272727;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+}
+
+section {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.content1 {
+    margin-top: 25px;
+    flex-direction: column;
+    margin-left: 1%;
+    margin-right: 3%;
+    padding: 1%;
+    flex: 2;
+    background-color: greenyellow;
+    border-radius: 8px;
+    border-width: 3px;
+    border-color: black;
+    border-style:solid;
+
+}
+
+.content2 {
+    margin-top: -10%;
+    margin-right: 100px;
+    flex: 1;
+
+}
+
+#videoWrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    /* Adjust as needed */
+}
+
+h4 {
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+
+}
+
+img {
+    width: 300px;
+    border-radius: 8px;
+}
