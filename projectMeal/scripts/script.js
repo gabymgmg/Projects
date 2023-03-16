@@ -61,14 +61,15 @@ function createLayout(meal) {
             <div id="content2">
                 <h2> ${meal.strMeal} </h2>
                 <p>${meal.strInstructions}</p> 
+                <div id="videoWrap">
+                    <h4> Video Recipe </h4>
+                    <iframe width="640" height="480"
+                        src="https://www.youtube.com/embed/${meal.strYoutube.slice(-11)}">
+                    </iframe>
+                </div>
             </div>
         </section>
-        <div id="videoWrap">
-            <h4> Video Recipe </h4>
-            <iframe width="640" height="480"
-                src="https://www.youtube.com/embed/${meal.strYoutube.slice(-11)}">
-            </iframe>
-        </div>
+
     </div>
     `
     recipe_description.innerHTML = newInnerHTML;
