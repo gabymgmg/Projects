@@ -1,0 +1,25 @@
+
+
+.container {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    /* This centers the container horizontally */
+    max-width: 70%;
+}
+
+h2 {
+    text-align: center;
+}
+button {
+    background-color: hsl(335, 90%, 71%);
+    margin-top: 10px;
+    color: white;
+    font-weight: light;
+    padding: 8px;
+    text-align: center;
+    text-shadow: 1px 1px 1.5px #272727;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
