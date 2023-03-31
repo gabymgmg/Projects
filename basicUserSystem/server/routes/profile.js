@@ -8,4 +8,3 @@ app.get('/profile', function(req,res){
 
 module.exports = app;
 
-//it's the same if I use create instead of save?

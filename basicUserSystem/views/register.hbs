@@ -10,7 +10,6 @@
 <body>
 
   {{!-- Navigation bar--}}
-  {{!-- Navigation bar--}}
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
       <h2 class="navbar-brand">
@@ -45,33 +44,23 @@
             <label for="email-reg" class="form-label">Email</label>
             <input type="text" class="form-control" id="email-reg" name="email">
           </div>
-
           <div class="mb-3">
             <label for="password-reg" class="form-label"> Password</label>
-            <input type="password" class="form-control" id="password-reg" name="password-reg">
+            <input type="password" class="form-control" id="password" name="password">
           </div>
           <div class="mb-3">
             <label for="password-reg" class="form-label"> Confirm Password</label>
-            <input type="password" class="form-control" id="password" name="password">
+            <input type="password" class="form-control" id="password_confirmed" name="password_confirmed">
           </div>
+          {{#if message }}
+          <h4 class="alert alert-danger mt-4">{{message}}</h4>
+          {{/if}}
           <button type="submit" class="btn btn-primary">Submit</button>
         </form>
       </div>
     </div>
   </div>
   </div>
-
-  <script>
-    function validateForm() {
-      var password = document.getElementById("password-reg").value;
-      var confirm_password = document.getElementById("password").value;
-
-      if (password != confirm_password) {
-        alert("Passwords do not match");
-        return false;
-      }
-    }
-  </script>
 </body>
 
 </html>
