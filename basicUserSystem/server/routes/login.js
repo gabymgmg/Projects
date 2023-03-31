@@ -4,6 +4,10 @@ const jwt = require('jsonwebtoken');
 const User = require('./../models/user');
 const app = express();
 
+
+app.get('/login', function(req,res){
+    res.render('login')
+})
 app.post('/login', function (req, res) {
     const body = req.body
     //check if email exists
@@ -28,7 +32,8 @@ app.post('/login', function (req, res) {
         res.json({
             usuario: userDoc,
             token
-        })
+          })
+
     })
 })
 module.exports = app;

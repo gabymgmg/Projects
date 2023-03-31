@@ -2,13 +2,20 @@ const express = require('express');
 const bcrypt = require('bcrypt');
 const User = require('./../models/user');
 const app = express();
-
+app.get('/register', function(req,res){
+    res.render("register")
+})
 app.post('/register', function (req, res) {
     const body = req.body
-    let { name, email, password, role } = body;
-    //encryp password 
+    let name = body.name
+    let email = body.email
+    let password = body.password
+    let role = body.role
+    console.log(name,email)
+    //encrypt password 
     let user = new User({
-        nombre,
+        name,
+        email,
         password: bcrypt.hashSync(password, 10),
         role
     });
@@ -17,7 +24,9 @@ app.post('/register', function (req, res) {
             return res.json({ err })
         }
         else {
-            res.json({ user })
+            return res.json({
+                usuario: userDoc,
+              })
         }
     })
 })
