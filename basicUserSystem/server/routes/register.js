@@ -43,10 +43,8 @@ app.post('/register', function (req, res) {
             if (err) {
                 return res.json({ err });
             } else {
-                return res.json({
-                    usuario: userDoc,
-                    email
-                });
+                return res.render('profile',{name:userDoc.name,email:userDoc.email})
+
             }
         });
     });
