@@ -1,22 +1,47 @@
-.navbar {
-    background-color: #333;
-    color: #fff;
-  }
-  
-  .navbar-brand,
-  .nav-link {
-    color: #fff;
-  }
-  
-  .nav-link {
-    padding: 0.5rem 1rem;
-    transition: color 0.2s;
-  }
-  
-  .nav-link:hover {
-    color: #ffc107;
-  }
-  
-  .navbar-nav {
-    margin-left: auto;
-  }
+
+.profile-picture {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.profile-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.profile-name {
+  font-size: 24px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.profile-email {
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 40px;
+
+}
+
+.profile-card {
+  width: 40%;
+  margin: 0 auto; 
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+
+
+
+

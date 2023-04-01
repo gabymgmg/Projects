@@ -21,7 +21,7 @@ app.post('/login', function (req, res) {
         }
         //in case it exists, check if password is the same from DB 
         if (!bcrypt.compareSync(body.password, userDoc.password)) {
-            return res.json({ error: 'invalid password' })
+            return res.json({ err: 'invalid password' })
         }
         //if password's valid, generate token auth
         let token = jwt.sign({
@@ -29,10 +29,7 @@ app.post('/login', function (req, res) {
         }, process.env.SEED_AUTENTICACION, {
             expiresIn: process.env.CADUCIDAD_TOKEN
         })
-        res.json({
-            usuario: userDoc,
-            token
-          })
+        return res.render('profile',{name:userDoc.name,email:userDoc.email})
 
     })
 })
