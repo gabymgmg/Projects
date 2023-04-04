@@ -5,32 +5,43 @@ const User = require('./../models/user');
 const app = express();
 
 
-app.get('/login', function(req,res){
+app.get('/login', function (req, res) {
     res.render('login')
 })
-app.post('/login', function (req, res) {
-    const body = req.body
-    //check if email exists
-    User.findOne({ email: body.email }, function (err, userDoc) {
-        if (err) {
-            return res.json({ err })
+app.post('/login', async function (req, res) {
+    try {
+        // Extract email and password from the req.body object
+        const { email, password } = req.body;
+        //check if email exists
+        let user = await User.findOne({ email });
+        if (!user) {
+            return res.status(401).render("login", { message: "User not registered" });
         }
-        // if email doesn't exists
-        if (!userDoc) {
-            return res.json({ err: 'invalid email or password' })
-        }
-        //in case it exists, check if password is the same from DB 
-        if (!bcrypt.compareSync(body.password, userDoc.password)) {
-            return res.json({ err: 'invalid password' })
-        }
-        //if password's valid, generate token auth
-        let token = jwt.sign({
-            usuario: userDoc,
-        }, process.env.SEED_AUTENTICACION, {
-            expiresIn: process.env.CADUCIDAD_TOKEN
-        })
-        return res.render('profile',{name:userDoc.name,email:userDoc.email})
-
-    })
+        bcrypt.compare(password, user.password, (err, userDoc) => {
+            if (err) {
+                return res.status(500).render("login", { message: "Internal Server Error" });
+            }
+            if (userDoc) {
+                //if password's valid, generate token auth(needed to perform an action)
+                let token = jwt.sign({
+                    usuario: userDoc,
+                }, process.env.SEED_AUTENTICACION, {
+                    expiresIn: process.env.CADUCIDAD_TOKEN
+                })
+                return res.status(200).render("profile",
+                    {
+                        message: "User Logged in Successfully",
+                        name:user.name, //user.name used since userDoc has a value of true/false and not the properties
+                        email:user.email
+                    });
+            } else {
+                return res.status(401).render("login", { message: "Invalid Email/Password" });
+            }
+        });
+    }
+    catch {
+        return res.status(500).render("login", { message: "Internal Server Error" });
+    }
 })
+
 module.exports = app;

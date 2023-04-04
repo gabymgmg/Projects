@@ -7,47 +7,33 @@ app.get('/register', function (req, res) {
     res.render("register")
 });
 
-app.post('/register', function (req, res) {
-    const body = req.body;
-    const name = body.name;
-    const email = body.email;
-    const password = body.password;
-    const password_confirmed = body.password_confirmed;
-    const role = body.role;
-    
-    if (password !== password_confirmed) {
-        return res.render('register', {
-            message: 'Passwords do not match!'
-        });
-    }
-
-    User.findOne({ email: email }, function (err, userDoc) {
-        if (err) {
-            return res.json({ err });
-        }
-
-        if (userDoc) {
+app.post('/register', async function (req, res) {
+    try {
+        const { body, name, email, password, password_confirmed, role } = req.body
+        if (password !== password_confirmed) {
             return res.render('register', {
-                message: 'This email is already in use'
+                message: 'Passwords do not match!'
             });
         }
+        const userExists = await User.findOne({ email });
+        if (userExists) {
+            return res.status(401).render("register",
+                { message: "User already registered" });
+        };
 
+        const hashedPassword = await bcrypt.hash(password, 10);
         const user = new User({
             name,
             email,
-            password: bcrypt.hashSync(password, 10),
+            password: hashedPassword,
             role
         });
-
-        user.save(function (err, userDoc) {
-            if (err) {
-                return res.json({ err });
-            } else {
-                return res.render('profile',{name:userDoc.name,email:userDoc.email})
-
-            }
-        });
-    });
+        const userSaved = await user.save();
+        return res.render('profile', { name: userSaved.name, email: userSaved.email });
+    }
+    catch (err) {
+        return res.status(500).render("register", { message: "Internal Server Error" });
+    }
 });
 
 module.exports = app;

@@ -8,7 +8,6 @@ const bodyParser = require('body-parser')
 const path = require('path')
 const publicDir = path.join(__dirname, '../public') 
 const hbs = require('hbs')
-console.log(publicDir)
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
