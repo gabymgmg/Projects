@@ -11061,6 +11061,7 @@ body {
   text-transform: uppercase;
   letter-spacing: 0.15rem;
   border: 0;
+  background-color:lightgray;
 }
 
 .masthead {
