@@ -34,41 +34,14 @@ block content
             | Grayscale is a free Bootstrap theme created by Start Bootstrap. It can be yours right now, simply download the template on
             a(href='https://startbootstrap.com/theme/grayscale/') the preview page.
             |                             The theme is open source, and you can use it for any purpose, personal or commercial.
-      img.img-fluid(src='assets/img/ipad.png' alt='...')
+      img.img-fluid(src='assets/img/ipad.png' alt='...')   
   // Projects
   section#projects.projects-section.bg-light
-    .container.px-4.px-lg-5
-      // Featured Project Row
-      .row.gx-0.mb-4.mb-lg-5.align-items-center
-        .col-xl-8.col-lg-7
-          img.img-fluid.mb-3.mb-lg-0(src='assets/img/bg-masthead.jpg' alt='...')
-        .col-xl-4.col-lg-5
-          .featured-text.text-center.text-lg-left
-            h4 Shoreline
-            p.text-black-50.mb-0
-              | Grayscale is open source and MIT licensed. This means you can use it for any project - even commercial projects! Download it, customize it, and publish your website!
-      // Project One Row
-      .row.gx-0.mb-5.mb-lg-0.justify-content-center
-        .col-lg-6
-          img.img-fluid(src='assets/img/demo-image-01.jpg' alt='...')
-        .col-lg-6
-          .bg-black.text-center.h-100.project
-            .d-flex.h-100
-              .project-text.w-100.my-auto.text-center.text-lg-left
-                h4.text-white Misty
-                p.mb-0.text-white-50
-                  | An example of where you can put an image of a project, or anything else, along with a description.
-      // Project Two Row
-      .row.gx-0.justify-content-center
-        .col-lg-6
-          img.img-fluid(src='assets/img/demo-image-02.jpg' alt='...')
-        .col-lg-6.order-lg-first
-          .bg-black.text-center.h-100.project
-            .d-flex.h-100
-              .project-text.w-100.my-auto.text-center.text-lg-right
-                h4.text-white Mountains
-                p.mb-0.text-white-50
-                  | Another example of a project with its respective description. These sections work well responsively as well!
+    .container
+      .row
+        .col-lg-8.mx-auto.text-center
+          h2.text-black.mb-4 Mapa
+      #main_map
   // Signup
   section#signup.signup-section
     .container.px-4.px-lg-5
@@ -146,10 +119,13 @@ block content
     .container.px-4.px-lg-5 Copyright &copy; Your Website 2023
   // Bootstrap core JS
   script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js')
+  script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js')
+
+  //Third party plugin JS
+  script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js')
+  
+  script(src='https://cdn.startbootstrap.com/sb-forms-latest.js')
+  
   // Core theme JS
   script(src='/javascripts/scripts.js')
-  // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-  // * *                               SB Forms JS                               * *
-  // * * Activate your form at https://startbootstrap.com/solution/contact-forms * *
-  // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-  script(src='https://cdn.startbootstrap.com/sb-forms-latest.js')
+  script(src='/javascripts/map.js')

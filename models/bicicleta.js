@@ -1,4 +1,4 @@
-let Bicicleta = function (id,color,modelo,ubicacion){
+const Bicicleta = function (id,color,modelo,ubicacion){
     this.id = id;
     this.color = color;
     this.modelo = modelo;
@@ -35,8 +35,9 @@ Bicicleta.removeById = function(aBiciId){
 }
 
 
-let a = new Bicicleta(1,'rojo', 'urbana', [-34.6,-58.41667])
-let b = new Bicicleta(2, 'azul', 'urbana', [-34.58333,-58.41667])
+const a = new Bicicleta(1, 'rojo', 'urbana', [-34.606929, -58.420711]);
+const b = new Bicicleta(2, 'azul', 'urbana', [-34.579912, -58.432075]);
+
 
 Bicicleta.add(a);
 Bicicleta.add(b);
