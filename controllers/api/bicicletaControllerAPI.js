@@ -25,3 +25,14 @@ exports.bicicleta_delete = function(req,res){
     Bicicleta.removeById(biciToDelete);
     res.status(204).send();
 }
+
+exports.bicicleta_update = function(req,res){
+    const biciToUpdate= Bicicleta.findById(req.body.id);
+    biciToUpdate.color = req.body.color;
+    biciToUpdate.modelo = req.body.modelo;
+    biciToUpdate.ubicacion = [req.body.latitud,req.body.longitud];
+
+    res.status(200).json({
+        bicicleta: biciToUpdate
+    });
+}
