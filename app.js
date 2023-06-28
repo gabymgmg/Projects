@@ -3,13 +3,23 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
-
+const mongoose = require('mongoose')
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const bicicletaRouter = require('./routes/bicicletas')
 const bicicletaAPIRouter = require('./routes/api/bicicletas')
 
+
 const app = express();
+var mongoDB = 'mongodb://localhost/red_bicicletas';
+//connection to DB
+mongoose.connect(mongoDB,{useNewUrlParser: true})
+mongoose.Promise = global.Promise;
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+ // estamos conectados!
+}); 
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
