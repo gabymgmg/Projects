@@ -1,0 +1,18 @@
+const mongoose = require('mongoose');
+const moment = require('moment');// help to work with dates
+const Schema = mongoose.Schema;
+
+const reservaSchema = new Schema({
+    desde: Date,
+    hasta: Date,
+    bicicleta: { type:mongoose.Schema.Types.ObjectId, ref: 'Bicicleta' },
+    usuario: { type: mongoose.Schema.Types.ObjectId, ref: 'Usuario' },
+});
+
+//calculate how many days of reservation
+reservaSchema.methods.diasDeReserva = function(){
+    return moment(this.hasta).diff(moment(this.desde), 'days') + 1;
+}
+
+
+module.exports = mongoose.model('Reserva', reservaSchema);

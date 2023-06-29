@@ -1,14 +1,36 @@
+const mongoose = require('mongoose');
 const Bicicleta = require('../../models/bicicleta');
 const axios = require('axios');
 const server = require('../../bin/www');
+const base_url = "http://localhost:5000/api/bicicletas";
 
 describe('Bicicleta API', () => {
+    //connect to the DB in every test
+    beforeEach(async function () {
+        try {
+            const mongoDB = 'mongodb://localhost/testdb';
+            await mongoose.connect(mongoDB, { useNewUrlParser: true });
+            console.log('Connected to the test database');
+        } catch (error) {
+            console.error('Error connecting to the test database:', error);
+        }
+    });
+
+    afterEach(async function () {
+        try {
+            await Bicicleta.deleteMany({});
+            console.log('Deleted all Bicicleta documents');
+        } catch (error) {
+            console.error('Error deleting Bicicleta documents:', error);
+        }
+    });
+
     describe('GET BICICLETAS /', () => {
         it('Status 200', () => {
             expect(Bicicleta.allBicis.length).toBe(0);
             const a = new Bicicleta(1, 'verde', 'urbana', [-34.606929, -58.420711]);
             Bicicleta.add(a);
-            axios.get('https://localhost:3000/api/bicicletas')
+            axios.get(base_url)
                 .then(response => {
                     expect(response.status).toBe(200);
                 })

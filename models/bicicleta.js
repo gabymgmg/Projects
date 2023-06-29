@@ -10,7 +10,7 @@ const bicicletaSchema = new Schema({
   },
 });
 
-bicicletaSchema.statics.createInstance = function(code, color, modelo, ubicacion) {
+bicicletaSchema.statics.createInstance = function (code, color, modelo, ubicacion) {
   return new this({
     code: code,
     color: color,
@@ -19,11 +19,11 @@ bicicletaSchema.statics.createInstance = function(code, color, modelo, ubicacion
   });
 };
 
-bicicletaSchema.methods.toString = function() {
+bicicletaSchema.methods.toString = function () {
   return 'id' + this.id + "| color:" + this.color;
 };
 
-bicicletaSchema.statics.allBicis = async function() {
+bicicletaSchema.statics.allBicis = async function () {
   try {
     return await this.find({});
   } catch (error) {
@@ -31,7 +31,7 @@ bicicletaSchema.statics.allBicis = async function() {
   }
 };
 
-bicicletaSchema.statics.add = async function(aBici) {
+bicicletaSchema.statics.add = async function (aBici) {
   try {
     return await this.create(aBici);
   } catch (error) {
@@ -39,22 +39,22 @@ bicicletaSchema.statics.add = async function(aBici) {
   }
 };
 
-bicicletaSchema.statics.findByCode = async function(bcode){
-    try{
-        return await this.find({code:bcode})
-    }
-    catch(error){
-        throw(error)
-    }
+bicicletaSchema.statics.findByCode = async function (bcode) {
+  try {
+    return await this.find({ code: bcode })
+  }
+  catch (error) {
+    throw (error)
+  }
 };
 
-bicicletaSchema.statics.removeByCode = async function(bcode){
-    try{
-        return this.deleteOne({code:bcode})
-    }
-    catch(error){
-        throw(error)
-    }
+bicicletaSchema.statics.removeByCode = async function (bcode) {
+  try {
+    return this.deleteOne({ code: bcode })
+  }
+  catch (error) {
+    throw (error)
+  }
 };
 
 module.exports = mongoose.model('Bicicleta', bicicletaSchema);

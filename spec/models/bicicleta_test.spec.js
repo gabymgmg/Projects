@@ -4,8 +4,7 @@ const mongoose = require('mongoose');
 describe('testing bicicletas', function () {
     beforeEach(async function () {
         try {
-            const mongoDB =
-                'mongodb://localhost/testdb';
+            const mongoDB = 'mongodb://localhost/testdb';
             await mongoose.connect(mongoDB, { useNewUrlParser: true });
             console.log('Connected to the test database');
         } catch (error) {
