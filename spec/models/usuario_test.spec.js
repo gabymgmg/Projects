@@ -1,8 +1,9 @@
-const Reserva = require('../../models/reverva.js');
-const Usuario = require('../../models/usuario.js');
 const Bicicleta = require('../../models/bicicleta.js');
+const Usuario = require('../../models/usuario.js');
+const Reserva = require('../../models/reserva.js');
+const mongoose = require('mongoose');
 
-describe('Tetsing de Usuarios', function () {
+describe('Testing de Usuarios', function () {
     beforeEach(async function () {
         try {
             const mongoDB = 'mongodb://localhost/testdb';
@@ -38,7 +39,7 @@ describe('Tetsing de Usuarios', function () {
                 const tomorrow = new Date();
                 tomorrow.setDate(today.getDate() + 1);
 
-                usuario.reservar(today, tomorrow, bicicleta.id, function (error, reserva) {
+                usuario.reservar(bicicleta.id,today, tomorrow, function (error, reserva) {
                     Reserva.find({}).populate('bicicleta').populate('usuario').exec(function (err, reservas) {
                         console.log(reservas[0])
                         expect(reservas.length).toBe(1);
